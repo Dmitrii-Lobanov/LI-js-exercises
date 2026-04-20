@@ -12,8 +12,27 @@ const data = [
  * @returns {array}
  */
 function restructureArray(data) {
+  const dataMap = {};
+
   // Create an array to hold the root elements
   const root = [];
+
+  data.forEach((item) => {
+    dataMap[item.id] = {
+      ...item,
+      children: [],
+    };
+  });
+
+  data.forEach((item) => {
+    const parent = dataMap[item.parent];
+
+    if (parent) {
+      parent.children.push(dataMap[item.id]);
+    } else {
+      root.push(dataMap[item.id]);
+    }
+  });
 
   return root;
 }
