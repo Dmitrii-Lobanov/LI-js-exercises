@@ -14,24 +14,32 @@ class Vehicle {
 // Car class extends Vehicle
 // Add number of doors
 class Car extends Vehicle {
-  constructor(name, doors) {
-    super(name, 4);
+  constructor(name, doors, wheels) {
+    super(name, wheels);
     this.doors = doors;
+    this.wheels = wheels ?? 4;
+  }
+
+  getDescription() {
+    return `${super.getDescription()} and ${this.doors} doors`;
   }
 }
 
 // Bike class extends Vehicle
 class Bike extends Vehicle {
-  constructor(name, type) {
-    super(name, 2);
+  constructor(name, type, wheels) {
+    super(name, wheels);
     this.type = type;
+    this.wheels = wheels ?? 2;
+  }
+
+  getDescription() {
+    return `${super.getDescription()} and ${this.type} type`;
   }
 }
 
 const myCar = new Car("My Car", 4);
 console.log(myCar.getDescription()); // My Car has 4 wheels
-console.log(myCar.doors); // 4
 
 const myBike = new Bike("My Bike", "offroad");
 console.log(myBike.getDescription()); // My Bike has 2 wheels
-console.log(myBike.type); // offroad
