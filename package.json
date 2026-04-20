@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/LinkedInLearning/advance-your-skills-with-javascript-4452106#readme",
   "dependencies": {
-    "jsdom": "^22.1.0"
+    "jsdom": "^29.0.2"
   },
   "devDependencies": {
     "eslint": "^8.40.0",
