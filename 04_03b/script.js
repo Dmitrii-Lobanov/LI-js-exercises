@@ -19,7 +19,15 @@ class Product {
 
   // The method that adds a new subscriber.
   registerObserver(customer) {
-    this.observers.push(customer.message.bind(customer));
+    this.observers.push(customer.boundMessage);
+
+    console.log(`${customer.name} has been registered as an observer of ${this.name}.`);
+  }
+
+  removeObserver(customer) {
+    this.observers = this.observers.filter((observer) => observer !== customer.boundMessage);
+
+    console.log(`${customer.name} has been removed as an observer of ${this.name}.`);
   }
 
   // The method that calls all subscribers.
@@ -31,6 +39,7 @@ class Product {
 class Customer {
   constructor(name) {
     this.name = name;
+    this.boundMessage = this.message.bind(this);
   }
 
   // The method that is called when the customer is notified.
